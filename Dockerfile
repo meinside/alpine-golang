@@ -9,7 +9,7 @@
 FROM alpine:3.8
 
 # target go version
-ENV go_version="1.11.3" \
+ENV go_version="1.11.4" \
 	bootstrap_go_version="1.4"
 
 # other variables
