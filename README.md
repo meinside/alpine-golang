@@ -68,4 +68,21 @@ You can run the image with:
 ```bash
 $ docker run IMAGE-NAME
 ```
+## How to update this docker image
 
+Edit `Dockerfile`,
+
+then build image:
+
+```bash
+$ docker build -t meinside/alpine-golang:TAG_NAME .
+```
+
+and push it to docker hub:
+
+```bash
+$ docker push meinside/alpine-golang:TAG_NAME
+
+# also push as the 'latest' tag
+$ docker tag HASH_NAME meinside/alpine-golang:latest
+$ docker push meinside/alpine-golang:latest
