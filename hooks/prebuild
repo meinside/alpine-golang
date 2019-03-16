@@ -2,6 +2,7 @@
 #
 # from: https://stackoverflow.com/questions/54578066/how-to-build-a-docker-image-on-a-specific-architecture-with-docker-hub
 
+# get target architecture from filename: "Dockerfile.{arch}"
 BUILD_ARCH=$(echo "${DOCKERFILE_PATH}" | cut -d '.' -f 2)
 
 # if it has no target architecture, do nothing
