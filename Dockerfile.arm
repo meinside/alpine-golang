@@ -2,12 +2,12 @@
 # (ARM / Raspberry Pi)
 #
 # created: 2019.03.16.
-# updated: 2019.03.16.
+# updated: 2019.03.18.
 #
 # referenced: https://github.com/meinside/rpi-configs/blob/master/bin/install_go.sh
 
-# https://hub.docker.com/r/arm32v7/alpine/
-FROM arm32v7/alpine:3.9
+# https://hub.docker.com/r/arm32v7/golang
+FROM arm32v7/golang:latest
 
 # https://stackoverflow.com/questions/54578066/how-to-build-a-docker-image-on-a-specific-architecture-with-docker-hub
 COPY qemu-arm-static /usr/bin/
