@@ -2,13 +2,15 @@
 
 Docker image for go development.
 
-Builds go from the source.
+Builds go 1.4 from the source, then builds latest go again with it.
+
+It can be used as a base for minimal go application images.
 
 ## How to use
 
 ### On x64 Linux
 
-Use tags named `vN.N.N` or `latest`.
+Use tags named `N.N.N` or `latest`.
 
 Inside your go application's source directory, create a `Dockerfile` with following content:
 
@@ -74,7 +76,7 @@ $ docker run IMAGE-NAME
 ```
 ### On Raspberry Pi 3/3+ (ARM32v7)
 
-Use tags named `vN.N.N-arm` or `latest-arm`.
+Use tags named `N.N.N-arm` or `latest-arm`.
 
 Inside your go application's source directory, create a `Dockerfile` with following content:
 
