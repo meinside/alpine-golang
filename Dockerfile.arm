@@ -7,26 +7,35 @@
 # referenced: https://github.com/meinside/rpi-configs/blob/master/bin/install_go.sh
 
 # https://hub.docker.com/r/arm32v7/golang
-FROM arm32v7/golang:latest
+FROM arm32v7/alpine:3.9
 
 # https://stackoverflow.com/questions/54578066/how-to-build-a-docker-image-on-a-specific-architecture-with-docker-hub
-COPY qemu-arm-static /usr/bin/
+#COPY qemu-arm-static /usr/bin/
 
 # target go version
-ENV go_version="1.12.1"
+ENV go_version="1.12.1" \
+	bootstrap_go_version="1.4"
 
 # other variables
 ENV go_repository="https://go.googlesource.com/go" \
+	bootstrap_go_branch="release-branch.go$bootstrap_go_version" \
+	bootstrap_go_dir="/go1.4" \
 	go_branch="go$go_version" \
 	go_dir="/go-$go_version"
 
-# install needed packages including golang (for bootstrapping),
+# install packages,
+# clone bootstrap go (1.4) repository,
+# build bootstrap go (1.4),
 # build go with bootstrap go,
 # then remove unneeded files
-RUN apk add --no-cache bash git go && \
+RUN apk add --no-cache bash git gcc libc-dev linux-headers && \
+	git clone -b $bootstrap_go_branch $go_repository $bootstrap_go_dir && \
+	cd $bootstrap_go_dir/src && \
+	./make.bash && \
 	git clone -b $go_branch $go_repository $go_dir && \
 	cd $go_dir/src && \
-	GOROOT_BOOTSTRAP=`go env GOROOT` ./make.bash && \
+	GOROOT_BOOTSTRAP=$bootstrap_go_dir ./make.bash && \
+	rm -rf $bootstrap_go_dir && \
 	rm -rf $go_dir/.git $go_dir/pkg/obj $go_dir/pkg/bootstrap && \
 	mkdir /go
 
