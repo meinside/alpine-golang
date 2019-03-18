@@ -127,3 +127,16 @@ USER nobody:nobody
 ENTRYPOINT ["/app"]
 ```
 
+## Build
+
+### Dockerfile.arm
+
+Docker Hub's automated build doesn't work well, (qemu-arm-static problem?)
+
+so I had to build and push it manually on my Raspberry Pi with:
+
+```
+$ docker build -t meinside/alpine-golang:TAG-arm -f Dockerfile.arm .
+$ docker push meinside/alpine-golang:TAG-arm
+```
+
