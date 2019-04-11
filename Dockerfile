@@ -1,7 +1,7 @@
 # Dockerfile for Alpine Linux with Golang
 #
 # created: 2018.11.08.
-# updated: 2019.04.10.
+# updated: 2019.04.11.
 #
 # referenced: https://github.com/meinside/rpi-configs/blob/master/bin/install_go.sh
 
@@ -43,6 +43,9 @@ ENV GOROOT="$go_dir" \
 # check disk usage
 #RUN du -h -d 1 /
 
-# entry point
-ENTRYPOINT ["go", "version"]
+# show version
+RUN go version
+
+# default command
+CMD ["bash"]
 
