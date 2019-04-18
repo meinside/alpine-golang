@@ -29,7 +29,7 @@ RUN mkdir /user && \
 	echo 'nobody:x:65534:' > /user/group
 
 # Install certs, git, and mercurial
-RUN apk add --no-cache ca-certificates mercurial
+RUN apk add --no-cache ca-certificates git mercurial
 
 # Working directory outside $GOPATH
 WORKDIR /src
