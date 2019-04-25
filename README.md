@@ -83,6 +83,18 @@ $ docker run IMAGE-NAME
 
 ## Build
 
+Build with `Dockerfile`:
+
+```bash
+$ docker build -t TAG_NAME .
+```
+
+or build specific version of go:
+
+```bash
+$ docker build -t TAG_NAME --build-arg GO_VERSION=1.12 .
+```
+
 ### Dockerfile.arm
 
 Docker Hub's automated build doesn't work well for me, (`qemu-arm-static` problem?)

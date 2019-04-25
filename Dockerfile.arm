@@ -17,8 +17,11 @@ LABEL maintainer="meinside@gmail.com"
 # https://stackoverflow.com/questions/54578066/how-to-build-a-docker-image-on-a-specific-architecture-with-docker-hub
 #COPY qemu-arm-static /usr/bin/
 
+# build argument
+ARG GO_VERSION="1.12.4"
+
 # target go version
-ENV go_version="1.12.4" \
+ENV go_version="$GO_VERSION" \
 	bootstrap_go_version="1.4"
 
 # other variables
