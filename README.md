@@ -29,7 +29,7 @@ RUN mkdir /user && \
 	echo 'nobody:x:65534:' > /user/group
 
 # Install certs, git, and mercurial
-RUN apk add --no-cache ca-certificates mercurial
+RUN apk add --no-cache ca-certificates git mercurial
 
 # Working directory outside $GOPATH
 WORKDIR /src
@@ -82,6 +82,18 @@ $ docker run IMAGE-NAME
 ```
 
 ## Build
+
+Build with `Dockerfile`:
+
+```bash
+$ docker build -t TAG_NAME .
+```
+
+or build specific version of go:
+
+```bash
+$ docker build -t TAG_NAME --build-arg GO_VERSION=1.12 .
+```
 
 ### Dockerfile.arm
 
