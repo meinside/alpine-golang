@@ -86,13 +86,13 @@ $ docker run IMAGE-NAME
 Build with `Dockerfile`:
 
 ```bash
-$ docker build -t TAG_NAME .
+$ docker build --pull --no-cache -t TAG_NAME .
 ```
 
 or build specific version of go:
 
 ```bash
-$ docker build -t TAG_NAME --build-arg GO_VERSION=1.12 .
+$ docker build --pull --no-cache -t TAG_NAME --build-arg GO_VERSION=1.12 .
 ```
 
 ### Dockerfile.arm
@@ -102,7 +102,7 @@ Docker Hub's automated build doesn't work well for me, (`qemu-arm-static` proble
 so I had to build and push it manually on my Raspberry Pi with:
 
 ```
-$ docker build -t meinside/alpine-golang:TAG-armv7 -f Dockerfile.arm .
+$ docker build --pull --no-cache -t meinside/alpine-golang:TAG-armv7 -f Dockerfile.arm .
 $ docker push meinside/alpine-golang:TAG-armv7
 ```
 
