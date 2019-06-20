@@ -2,12 +2,12 @@
 # (ARM / Raspberry Pi)
 #
 # created: 2019.03.16.
-# updated: 2019.06.13.
+# updated: 2019.06.20.
 #
 # referenced: https://github.com/meinside/rpi-configs/blob/master/bin/install_go.sh
 
 # https://hub.docker.com/_/alpine/
-FROM alpine:3.9
+FROM alpine:3.10
 
 # https://hub.docker.com/r/arm32v7/alpine
 #FROM arm32v7/alpine:3.9
