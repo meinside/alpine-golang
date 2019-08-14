@@ -12,7 +12,7 @@ It can be used as a base for minimal go application images.
 
 Use tags named `N.N.N-x64` or `latest`.
 
-### On Raspberry Pi 3/3+ (ARM32v7)
+### On Raspberry Pi 3/3+/4 (ARM32v7)
 
 Use tags named `N.N.N-armv7` or `latest`.
 
