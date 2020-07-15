@@ -1,7 +1,7 @@
 # Dockerfile for Alpine Linux with Golang
 #
 # created: 2018.11.08.
-# updated: 2020.06.01.
+# updated: 2020.07.15.
 #
 # referenced: https://github.com/meinside/rpi-configs/blob/master/bin/install_go.sh
 
@@ -11,7 +11,7 @@ FROM alpine:3.12
 LABEL maintainer="meinside@gmail.com"
 
 # build argument
-ARG GO_VERSION="1.14.3"
+ARG GO_VERSION="1.14.4"
 
 # target go version
 ENV go_version="$GO_VERSION" \
