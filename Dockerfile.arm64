@@ -1,6 +1,7 @@
 # Dockerfile for Alpine Linux with Golang
+# (ARM64 / Raspberry Pi)
 #
-# created: 2018.11.08.
+# created: 2020.07.15.
 # updated: 2020.07.15.
 #
 # referenced: https://github.com/meinside/dotfiles/blob/master/bin/install_go.sh
@@ -8,19 +9,23 @@
 # https://hub.docker.com/_/alpine/
 FROM alpine:3.12
 
+# https://hub.docker.com/r/arm64v8/alpine
+#FROM arm64v8/alpine:3.12
+
 LABEL maintainer="meinside@gmail.com"
+
+# https://stackoverflow.com/questions/54578066/how-to-build-a-docker-image-on-a-specific-architecture-with-docker-hub
+#COPY qemu-arm-static /usr/bin/
 
 # build argument
 ARG GO_VERSION="1.14.5"
 
 # target go version
-ENV go_version="$GO_VERSION" \
-	bootstrap_go_version="1.4"
+ENV go_version="$GO_VERSION"
 
 # other variables
 ENV go_repository="https://go.googlesource.com/go" \
-	bootstrap_go_branch="release-branch.go$bootstrap_go_version" \
-	bootstrap_go_dir="/go1.4" \
+	bootstrap_go_dir="/usr/local/go" \
 	go_branch="go$go_version" \
 	go_dir="/go-$go_version"
 
@@ -29,14 +34,11 @@ ENV go_repository="https://go.googlesource.com/go" \
 # build bootstrap go (1.4),
 # build go with bootstrap go,
 # then remove unneeded files
-RUN apk add --no-cache bash git gcc libc-dev linux-headers && \
-	git clone -b $bootstrap_go_branch $go_repository $bootstrap_go_dir && \
-	cd $bootstrap_go_dir/src && \
-	./make.bash && \
+RUN apk add --no-cache bash git gcc libc-dev go && \
 	git clone -b $go_branch $go_repository $go_dir && \
 	cd $go_dir/src && \
 	GOROOT_BOOTSTRAP=$bootstrap_go_dir ./make.bash && \
-	rm -rf $bootstrap_go_dir && \
+	apk del go && \
 	rm -rf $go_dir/.git $go_dir/pkg/obj $go_dir/pkg/bootstrap && \
 	mkdir /go
 
