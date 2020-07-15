@@ -106,3 +106,12 @@ $ docker build --pull --no-cache -t meinside/alpine-golang:TAG-armv7 -f Dockerfi
 $ docker push meinside/alpine-golang:TAG-armv7
 ```
 
+### Dockerfile.arm64
+
+Go 1.4 doesn't support arm64, so I had to bootstrap with pacakage manager's version.
+
+```
+$ docker build --pull --no-cache -t meinside/alpine-golang:TAG-arm64v8 -f Dockerfile.arm64 .
+$ docker push meinside/alpine-golang:TAG-arm64v8
+```
+
