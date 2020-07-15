@@ -2,9 +2,9 @@
 
 Docker image for go development.
 
-Builds go 1.4 from the source, then builds latest go again with it.
+Builds Go 1.4 from the source, then builds latest Go again with it.
 
-It can be used as a base for minimal go application images.
+It can be used as a base for minimal Go application images.
 
 ## How to use
 
@@ -18,7 +18,7 @@ Use tags named `N.N.N-armv7` or `latest`.
 
 ### Build images with a new Dockerfile
 
-Inside your go application's source directory, create a `Dockerfile` with following content:
+Inside your Go application's source directory, create a `Dockerfile` with following content:
 
 ```
 FROM meinside/alpine-golang:latest AS builder
@@ -73,7 +73,7 @@ and build an image with it:
 $ docker build -t IMAGE-NAME .
 ```
 
-Then you'll get a minimal image that runs your go application.
+Then you'll get a minimal docker image which runs your Go application.
 
 You can run the image with:
 
@@ -83,35 +83,40 @@ $ docker run IMAGE-NAME
 
 ## Build
 
-Build with `Dockerfile`:
+Build manually with `Dockerfile`:
 
 ```bash
 $ docker build --pull --no-cache -t TAG_NAME .
 ```
 
-or build specific version of go:
+or build specific version of Go with:
 
 ```bash
 $ docker build --pull --no-cache -t TAG_NAME --build-arg GO_VERSION=1.12 .
 ```
 
-### Dockerfile.arm
+### Dockerfile.armhf and Dockerfile.aarch64
 
-Docker Hub's automated build doesn't work well for me, (`qemu-arm-static` problem?)
+I could not build Go 1.4 for armv7 and arm64 successfully on Docker Hub's automated build system.
 
-so I had to build and push it manually on my Raspberry Pi with:
+So these Dockerfiles build latest Go with package manager's version of Go.
+
+
+For building them manually:
 
 ```
-$ docker build --pull --no-cache -t meinside/alpine-golang:TAG-armv7 -f Dockerfile.arm .
+# armhf (arm/v7)
+$ docker build --pull --no-cache -t meinside/alpine-golang:TAG-armv7 -f Dockerfile.armhf .
 $ docker push meinside/alpine-golang:TAG-armv7
-```
 
-### Dockerfile.arm64
-
-Go 1.4 doesn't support arm64, so I had to bootstrap with pacakage manager's version.
-
-```
-$ docker build --pull --no-cache -t meinside/alpine-golang:TAG-arm64v8 -f Dockerfile.arm64 .
+# aarch64 (arm64/v8)
+$ docker build --pull --no-cache -t meinside/alpine-golang:TAG-arm64v8 -f Dockerfile.aarch64 .
 $ docker push meinside/alpine-golang:TAG-arm64v8
 ```
+
+## Automated Build Rules on Docker Hub
+
+- Tag (/^v([0-9.]+)$/) => {\1}-x64 (Dockerfile)
+- Tag (/^v([0-9.]+)$/) => {\1}-arm64v8 (Dockerfile.aarch64)
+- Tag (/^v([0-9.]+)$/) => {\1}-armv7 (Dockerfile.armhf)
 

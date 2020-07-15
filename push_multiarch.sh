@@ -34,7 +34,7 @@ docker manifest annotate meinside/alpine-golang:latest \
 	meinside/alpine-golang:$VERSION-x64 \
 	--os linux --arch amd64
 
-# annotation for arm32v7 (arm/v7)
+# annotation for armhf (arm/v7)
 docker manifest annotate meinside/alpine-golang:$VERSION \
 	meinside/alpine-golang:$VERSION-armv7 \
 	--os linux --arch arm --variant v7
@@ -42,7 +42,7 @@ docker manifest annotate meinside/alpine-golang:latest \
 	meinside/alpine-golang:$VERSION-armv7 \
 	--os linux --arch arm --variant v7
 
-# annotation for arm64 (aarch64/arm64v8)
+# annotation for aarch64 (arm64/v8)
 docker manifest annotate meinside/alpine-golang:$VERSION \
 	meinside/alpine-golang:$VERSION-arm64v8 \
 	--os linux --arch arm64 --variant v8

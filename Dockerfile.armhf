@@ -1,21 +1,18 @@
 # Dockerfile for Alpine Linux with Golang
-# (ARM64 / Raspberry Pi)
+# (ARM / Raspberry Pi)
 #
-# created: 2020.07.15.
+# created: 2019.03.16.
 # updated: 2020.07.15.
 #
 # referenced: https://github.com/meinside/dotfiles/blob/master/bin/install_go.sh
 
-# https://hub.docker.com/_/alpine/
-FROM alpine:3.12
-
-# https://hub.docker.com/r/arm64v8/alpine
-#FROM arm64v8/alpine:3.12
+# https://hub.docker.com/r/arm32v7/alpine
+FROM arm32v7/alpine:3.12
 
 LABEL maintainer="meinside@gmail.com"
 
 # https://stackoverflow.com/questions/54578066/how-to-build-a-docker-image-on-a-specific-architecture-with-docker-hub
-#COPY qemu-arm-static /usr/bin/
+COPY qemu-arm-static /usr/bin/
 
 # build argument
 ARG GO_VERSION="1.14.5"
@@ -30,8 +27,6 @@ ENV go_repository="https://go.googlesource.com/go" \
 	go_dir="/go-$go_version"
 
 # install packages,
-# clone bootstrap go (1.4) repository,
-# build bootstrap go (1.4),
 # build go with bootstrap go,
 # then remove unneeded files
 RUN apk add --no-cache bash git gcc libc-dev go && \
