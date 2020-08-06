@@ -16,6 +16,10 @@ Use tags named `N.N.N-x64` or `latest`.
 
 Use tags named `N.N.N-armv7` or `latest`.
 
+### On Raspberry Pi 3/3+/4 (ARM64v8)
+
+Use tags named `N.N.N-arm64v8` or `latest`.
+
 ### Build images with a new Dockerfile
 
 Inside your Go application's source directory, create a `Dockerfile` with following content:
