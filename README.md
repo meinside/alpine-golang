@@ -12,13 +12,13 @@ It can be used as a base for minimal Go application images.
 
 Use tags named `N.N.N-x64` or `latest`.
 
-### On Raspberry Pi 3/3+/4 (ARM32v7)
-
-Use tags named `N.N.N-armv7` or `latest`.
-
 ### On Raspberry Pi 3/3+/4 (ARM64v8)
 
 Use tags named `N.N.N-arm64v8` or `latest`.
+
+### On Raspberry Pi 3/3+/4 (ARM32v7)
+
+Use tags named `N.N.N-armv7` or `latest`.
 
 ### Build images with a new Dockerfile
 
