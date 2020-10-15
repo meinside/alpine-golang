@@ -2,7 +2,7 @@
 # (ARM / Raspberry Pi)
 #
 # created: 2019.03.16.
-# updated: 2020.09.11.
+# updated: 2020.10.15.
 #
 # referenced: https://github.com/meinside/dotfiles/blob/master/bin/install_go.sh
 
@@ -15,7 +15,7 @@ LABEL maintainer="meinside@gmail.com"
 COPY qemu-arm-static /usr/bin/
 
 # build argument
-ARG GO_VERSION="1.15.2"
+ARG GO_VERSION="1.15.3"
 
 # target go version
 ENV go_version="$GO_VERSION"
