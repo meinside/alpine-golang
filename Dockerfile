@@ -11,7 +11,7 @@ FROM alpine:3.13
 LABEL maintainer="meinside@gmail.com"
 
 # build argument
-ARG GO_VERSION="1.16.1"
+ARG GO_VERSION="1.16.2"
 
 # target go version
 ENV go_version="$GO_VERSION" \
