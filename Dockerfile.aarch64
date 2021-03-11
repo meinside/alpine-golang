@@ -15,7 +15,7 @@ LABEL maintainer="meinside@gmail.com"
 COPY qemu-aarch64-static /usr/bin/
 
 # build argument
-ARG GO_VERSION="1.16.1"
+ARG GO_VERSION="1.16.2"
 
 # target go version
 ENV go_version="$GO_VERSION"
