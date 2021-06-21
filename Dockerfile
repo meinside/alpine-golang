@@ -1,12 +1,12 @@
 # Dockerfile for Alpine Linux with Golang
 #
 # created: 2018.11.08.
-# updated: 2021.06.08.
+# updated: 2021.06.21.
 #
 # referenced: https://github.com/meinside/dotfiles/blob/master/bin/install_go.sh
 
 # https://hub.docker.com/_/alpine/
-FROM alpine:3.13
+FROM alpine:3.14
 
 LABEL maintainer="meinside@gmail.com"
 

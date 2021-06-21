@@ -2,12 +2,12 @@
 # (ARM64 / Raspberry Pi)
 #
 # created: 2020.07.15.
-# updated: 2021.06.08.
+# updated: 2021.06.21.
 #
 # referenced: https://github.com/meinside/dotfiles/blob/master/bin/install_go.sh
 
 # https://hub.docker.com/r/arm64v8/alpine
-FROM arm64v8/alpine:3.13
+FROM arm64v8/alpine:3.14
 
 LABEL maintainer="meinside@gmail.com"
 
