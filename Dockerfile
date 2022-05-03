@@ -8,7 +8,7 @@
 # https://hub.docker.com/_/alpine/
 FROM alpine:3.14
 
-LABEL maintainer="meinside@gmail.com"
+LABEL maintainer="meinside@duck.com"
 
 # build argument
 ARG GO_VERSION="1.16.6"
